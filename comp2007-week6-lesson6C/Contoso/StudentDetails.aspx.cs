@@ -26,7 +26,7 @@ namespace comp2007_week6_lesson6C
             int StudentID = Convert.ToInt32(Request.QueryString["StudentID"]);
 
             // connect to the EF DB
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // populate a student instance with the StudentID from the URL parameter
                 Student updatedStudent = (from student in db.Students
@@ -45,7 +45,7 @@ namespace comp2007_week6_lesson6C
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             // Use EF to connect to the server
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // use the Student model to create a new student object and
                 // save a new record
@@ -80,14 +80,14 @@ namespace comp2007_week6_lesson6C
                 db.SaveChanges();
 
                 // Redirect back to the updated students page
-                Response.Redirect("~/Students.aspx");
+                Response.Redirect("~/Contoso/Students.aspx");
             }
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             //Redirect  back to Studeents page
-            Response.Redirect("~/Students.aspx");
+            Response.Redirect("~/Contoso/Students.aspx");
         }
     }
 }

@@ -16,7 +16,23 @@ namespace comp2007_week2_lesson3B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetActivePage();
+            if (!IsPostBack)
+            {
+                //check if a user is logged in
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    //show the contoso Content area
+                    ContosoPlaceHolder.Visible=true;
+                    PublicPlaceHolder.Visible = false;
+                }
+                else
+                {
+                    //only show login and register
+                    ContosoPlaceHolder.Visible = false;
+                    PublicPlaceHolder.Visible = true;
+                }
+                SetActivePage();
+            }
         }
 
         /**
@@ -44,6 +60,15 @@ namespace comp2007_week2_lesson3B
                     break;
                 case "Contact":
                     contact.Attributes.Add("class", "active");
+                    break;
+                case "Contoso Menu":
+                    menu.Attributes.Add("class", "active");
+                    break;
+                case "Login":
+                    login.Attributes.Add("class", "active");
+                    break;
+                case "Register":
+                    register.Attributes.Add("class", "active");
                     break;
             }
         }

@@ -26,7 +26,7 @@ namespace comp2007_week6_lesson6C
             int DepartmentID = Convert.ToInt32(Request.QueryString["DepartmentID"]);
 
             // connect to the EF DB
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // populate a department instance with the DepartmentID from the URL parameter
                 Department updatedDepartment = (from department in db.Departments
@@ -37,20 +37,20 @@ namespace comp2007_week6_lesson6C
                 if (updatedDepartment != null)
                 {
                     NameTextBox.Text = updatedDepartment.Name;
-                    BudgetTextBox.Text = updatedDepartment.Budget.  );
+                    BudgetTextBox.Text = updatedDepartment.Budget.ToString();
                 }
             }
         }
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             //Redirect  back to Departments page
-            Response.Redirect("~/Departments.aspx");
+            Response.Redirect("~/Contoso/Departments.aspx");
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             // Use EF to connect to the server
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // use the Department model to create a new department object and
                 // save a new record
@@ -84,7 +84,7 @@ namespace comp2007_week6_lesson6C
                 db.SaveChanges();
 
                 // Redirect back to the updated Departments page
-                Response.Redirect("~/Departments.aspx");
+                Response.Redirect("~/Contoso/Departments.aspx");
             }
         }
     }

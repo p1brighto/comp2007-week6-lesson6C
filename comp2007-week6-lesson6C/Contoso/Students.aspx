@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
                 <h1>Student List</h1>
-                <a href="StudentDetails.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Student</a>
+                <a href="/Contoso/StudentDetails.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Student</a>
                 <label for="PageSizeDownList">records per page:</label>
                 <asp:DropDownList ID="PageSizeDownList" runat="server" AutoPostBack="true"
                      CssClass="btn btn-default btn-sm dropdown-toogle" OnSelectedIndexChanged="PageSizeDownList_SelectedIndexChanged"> 
@@ -24,7 +24,7 @@
                         <asp:BoundField DataField="FirstMidName" HeaderText="First Name" Visible="true" SortExpression="FirstMidName"/>
                         <asp:BoundField DataField="EnrollmentDate" HeaderText="Enrollment Date" Visible="true" SortExpression="EnrollmentDate"
                             DataFormatString="{0:MMM dd, yyyy}" />
-                        <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/StudentDetails.aspx.cs"
+                        <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/Contoso/StudentDetails.aspx.cs"
                             DataNavigateUrlFields="StudentID" DataNavigateUrlFormatString="StudentDetails.aspx?StudentID={0}" 
                             ControlStyle-CssClass="btn btn-primary btn-sm"/>
                         <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o fa-lg'></i>Delete" ShowDeleteButton="true" 

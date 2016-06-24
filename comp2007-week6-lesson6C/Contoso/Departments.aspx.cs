@@ -30,7 +30,7 @@ namespace comp2007_week6_lesson6C
             string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
             // connect to EF
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // query the departments Table using EF and LINQ
                 var Departments = (from allDepartments in db.Departments
@@ -50,7 +50,7 @@ namespace comp2007_week6_lesson6C
             int DepartmentID = Convert.ToInt32(DepartmentsGridView.DataKeys[selectedRow].Values["DepartmentID"]);
 
             // use EF to find the selected department from DB and remove it
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 Department deletedDepartment = (from departmentsRecords in db.Departments
                                                 where departmentsRecords.DepartmentID == DepartmentID

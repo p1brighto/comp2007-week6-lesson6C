@@ -38,7 +38,7 @@ namespace comp2007_week6_lesson6C
             string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
             // connect to EF
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // query the Students Table using EF and LINQ
                 var Students = (from allStudents in db.Students
@@ -59,7 +59,7 @@ namespace comp2007_week6_lesson6C
             int StudentID = Convert.ToInt32(StudentsGridView.DataKeys[selectedRow].Values["StudentID"]);
 
             // use EF to find the selected student from DB and remove it
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 Student deletedStudent = (from studentRecords in db.Students
                                           where studentRecords.StudentID == StudentID
