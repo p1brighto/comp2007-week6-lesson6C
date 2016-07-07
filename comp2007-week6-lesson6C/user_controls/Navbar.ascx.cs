@@ -5,6 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+// required for Identity and OWIN Security
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+
 /**
  * @author: Brighto Paul
  * @date: June 2, 2016
@@ -24,11 +29,21 @@ namespace comp2007_week2_lesson3B
                     //show the contoso Content area
                     ContosoPlaceHolder.Visible=true;
                     PublicPlaceHolder.Visible = false;
+
+                    if (HttpContext.Current.User.Identity.GetUserName()=="admin")
+                    {
+                        UserPlaceHolder.Visible = true;
+                    }
+                    else
+                    {
+                        UserPlaceHolder.Visible = false;
+                    }
                 }
                 else
                 {
                     //only show login and register
                     ContosoPlaceHolder.Visible = false;
+                    UserPlaceHolder.Visible = false;
                     PublicPlaceHolder.Visible = true;
                 }
                 SetActivePage();
@@ -69,6 +84,9 @@ namespace comp2007_week2_lesson3B
                     break;
                 case "Register":
                     register.Attributes.Add("class", "active");
+                    break;
+                case "Users":
+                    users.Attributes.Add("class", "active");
                     break;
             }
         }
